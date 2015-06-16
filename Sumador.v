@@ -2,33 +2,33 @@
 //////////////////////////////////////////////////////////////////////////////////
 //	Laboratorio de Diseño Digital
 // Proyecto de diseño #2
-// Multiplicador
+// Sumador
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Multiplicador #(parameter W = 19)(
+module Sumador #(parameter W = 19)(
     input Reset,
-    input wire signed [W-1:0] A,
-    input wire signed [W-1:0] B,
-    output reg signed [W-1:0] Mout
+    input wire signed [W-1:0] C,
+    input wire signed [W-1:0] D,
+    output reg signed [W-1:0] Sout
     );
 	
-	reg signed [2*W-1:0] R;
+	reg signed [W:0] R;
 	
 	always @* begin
 		if(Reset) begin
-			Mout <= 19'b0;
-			R <= 38'b0;
+			Sout <= 19'b0;
+			R <= 20'b0;
 		end
 		else begin
-			R <= A * B;
+			R <= C + D;
 			
-				  if(R != 38'b0 && R > 38'h000003FFFF && !R[2*W-1])
-				Mout <= 19'h3FFFF;
-			else if(R != 24'b0 && R < 38'h3FFFFC0000 &&  R[2*W-1])
-				Mout <= 19'h40000;
+				  if(R != 20'b0 && R > 20'h3FFFF && !R[W])
+				Sout <= 19'h3FFFF;
+			else if(R != 20'b0 && R < 20'hC0000 &&  R[W])
+				Sout <= 19'h40000;
 			else
-				Mout <= R[W-1:0];
+				Sout <= R[W-1:0];
 				
 		end
 	end

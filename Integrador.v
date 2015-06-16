@@ -6,7 +6,7 @@
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Integrador #(parameter W = 12)(
+module Integrador #(parameter W = 19)(
     input Reset, CLK, Enable,
     input wire [W-1:0] ek,
     output wire [W-1:0] ik
@@ -17,7 +17,7 @@ module Integrador #(parameter W = 12)(
 	Multiplicador Multiplicador_1 (
     .Reset(Reset), 
     .A(ek), 
-    .B(12'd7), 
+    .B(19'd7), 
     .Mout(c1)
     );
 	 

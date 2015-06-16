@@ -1,7 +1,10 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+//	Laboratorio de Diseño Digital
+// Proyecto de diseño #2
+// Sumador del offset de entrada
+// Diego Brenes Martínez
+// Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
 module PWM
 #(parameter TP=8, N_bit=14, sd=40) //El ancho de bits
@@ -17,7 +20,7 @@ reg [N_bit-1:0] contador=0;
 
 always @(posedge clk) 
 	begin
-		contador = contador+1;
+		contador = contador+1'b1;
 		
 		if (contador <= I_PD*sd) 
 			pwm_aux = 1; 

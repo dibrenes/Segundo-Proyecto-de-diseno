@@ -6,7 +6,7 @@
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module I_PD #(parameter W = 12)(
+module I_PD #(parameter W = 19)(
     input CLK, Reset,
     input wire [W-1:0] r,
     input wire [W-1:0] y,
@@ -28,7 +28,7 @@ module I_PD #(parameter W = 12)(
 	Sumador Sumador_1 (
     .Reset(Reset), 
     .C(r), 
-    .D(y), 
+    .D(-y), 
     .Sout(c1)
     );
 	 

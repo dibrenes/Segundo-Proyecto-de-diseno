@@ -2,29 +2,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 //	Laboratorio de Diseño Digital
 // Proyecto de diseño #2
-// Registro
+// Acople de entrada de la referencia
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Registro #(parameter W = 19)(
-    input Reset, CLK, Enable,
-    input wire [W-1:0] Entrada,
-    output reg [W-1:0] Salida
+
+module Acople_r #(parameter W = 19)(
+    input Reset,
+    input [7:0] rIN,
+    output reg [W-1:0] rOUT
     );
-	
-	reg [W-1:0] R;
-	
-	always @(posedge CLK) begin
-		if(Reset) begin
-			R <= 19'b0;
-			Salida <= 19'b0;
-		end
-		else if(Enable) begin
-			R <= Entrada;
-			Salida <= R;
-		end
+
+	always @* begin
+		if(Reset)
+			rOUT <= 19'b0;
 		else
-			Salida <= R;
+			rOUT <= {{11{rIN[7]}}, rIN};
 	end
 
 endmodule

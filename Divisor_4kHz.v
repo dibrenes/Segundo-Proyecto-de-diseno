@@ -2,31 +2,31 @@
 //////////////////////////////////////////////////////////////////////////////////
 //	Laboratorio de Diseño Digital
 // Proyecto de diseño #2
-// Habilitador de 200Hz
+// Divisor de frecuencia de 4kHz
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Divisor_5ms(
-    input CLK,
+module Divisor_4kHz(
     input Reset,
-    output reg Enable
+    input CLK,
+    output reg CLK4kHz
     );
-
-	reg [18:0] Contador;
+	
+	reg [14:0] Contador;
 	
 	always @(posedge CLK)
       if(Reset) begin
-         Contador <= 19'b0;
-			Enable <= 1'b0;
+         Contador <= 15'b0;
+			 CLK4kHz <= 1'b0;
 		end
       else begin
-         if(Contador == 19'd500000) begin //500 000
-				Contador <= 19'b0;
-				Enable <= 1'b1	;
+         if(Contador == 15'd25000) begin //25000
+				Contador <= 15'b0;
+				 CLK4kHz <= ~CLK4kHz;
 			end
 			else begin
 				Contador <= Contador + 1'b1;
-				Enable <= 1'b0;
+				 CLK4kHz <= CLK4kHz;
 			end
 		end
 

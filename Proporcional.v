@@ -6,7 +6,7 @@
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Proporcional #(parameter W = 12)(
+module Proporcional #(parameter W = 19)(
 	 input Reset,
     input wire [W-1:0] y,
     output wire [W-1:0] pk
@@ -15,7 +15,7 @@ module Proporcional #(parameter W = 12)(
 	Multiplicador Multiplicador_1 (
     .Reset(Reset), 
     .A(y), 
-    .B(12'd18), 
+    .B(19'd18), 
     .Mout(pk)
     );
 

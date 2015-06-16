@@ -6,7 +6,7 @@
 // Diego Brenes Martínez
 // Francisco Chacón Cambronero
 //////////////////////////////////////////////////////////////////////////////////
-module Derivador #(parameter W = 12)(
+module Derivador #(parameter W = 19)(
     input CLK, Reset, Enable,
     input wire [W-1:0] y,
     output wire [W-1:0] dk
@@ -32,7 +32,7 @@ module Derivador #(parameter W = 12)(
 	Multiplicador Multiplicador_1 (
     .Reset(Reset), 
     .A(c2), 
-    .B(12'd150), 
+    .B(19'd150), 
     .Mout(dk)
     );
 	 
